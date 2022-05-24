@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Books</title>
+    <link rel="stylesheet" href="../public/css/main.css" type="text/css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li>
+                    <a href="/">Add a book</a>
+                </li>
+                <li>
+                    <a href="/books/list">List</a>
+                </li>
+                <li>
+                    <a href="/books/update">Update/Delete book</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <h1>My Books</h1>
+    
+    <main>
+            <form class="add-book" action="/books/new" method="POST">
+            <p>
+                <input type="text" name="name" placeholder="name" id="name">
+            </p>
+            <p>
+                <input type="text" name="author" placeholder="author" id="author">
+            </p>
+            <p>
+                <select id="category" name="category">
+                    <option value="">--Please choose a category--</option>
+                    <option value="Classics">Classics</option>
+                    <option value="Cookbooks">Cookbooks</option>
+                    <option value="Fantasy">Fantasy</option>
+                    <option value="Fiction">Fiction</option>
+                    <option value="HistoricalFiction">Historical Fiction</option>
+                    <option value="History">History</option>
+                    <option value="Mystery">Mystery</option>
+                    <option value="Psychology">Psychology</option>
+                    <option value="Romance">Romance</option>
+                    <option value="Science">Science</option>
+                    <option value="ScienceFiction">Science Fiction</option>
+                    <option value="Thriller">Thriller</option>
+                    <option value="Travel">Travel</option>
+                    <option value="YoungAdult">Young Adult</option>
+                </select>
+            </p>
+            <p>
+                <select id="list" name="list">
+                    <option value="">--Please choose a list--</option>
+                    <option value="Read">Read</option>
+                    <option value="Reading">Reading</option>
+                    <option value="ToRead">To Read</option>
+                    <option value="ToBuy">To Buy</option>
+                    <option value="Drop">Drop</option>
+                </select>
+            </p>
+            <p>
+                <select id="kind" name="kind">
+                    <option value="">--What kind of book is it ?--</option>
+                    <option value="Comics">Comics</option>
+                    <option value="GraphicNovel">Graphic Novel</option>
+                    <option value="PaperBook">Paper Book</option>
+                    <option value="EBook">EBook</option>
+                </select>
+            </p>
+            <button>Add book</button>
+        </form>
+        
+    </main>
+    
+    
+    
+    <script src="/public/js/script.js"></script>
+</body>
+
+</html>

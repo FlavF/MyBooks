@@ -1,0 +1,72 @@
+*{
+    margin :0 auto;
+}
+
+
+/* ? BODY */
+
+body {
+    font-size: 15rem;
+    font-family: Verdana, sans-serif;
+}
+
+h1{
+    text-align: center;
+    padding: 1rem;
+}
+
+/* ? HEADER */
+
+header {
+    background-color: darkgreen;
+    padding:1rem;
+}
+
+header>nav>ul{
+    display:flex;
+    justify-content: space-around;
+    align-items: baseline;
+    
+}
+
+li{
+    list-style: none;
+}
+
+li>a{
+    text-decoration: none;
+    color : white
+}
+
+/* ? MAIN */
+
+main {
+    padding-left: 1rem;
+}
+
+
+.add-book{
+    padding-left: 45%;
+}
+.add-book input,
+.add-book select{
+    margin-top: 1rem;
+    padding: 0.5rem;
+    background-color: darkgreen;
+    border:0.1rem solid lightseagreen;
+    color:lightseagreen;
+}
+.add-book button {
+    text-align: center;
+    margin-top: 1rem;
+    padding: 0.5rem;
+    background-color:lightseagreen;
+    border:0.1rem solid darkgreen;
+    color:darkgreen;
+}
+.add-book button:focus,
+.add-book button:hover{
+    background-color: darkgreen;
+    border:0.1rem solid lightseagreen;
+    color:lightseagreen;
+}
