@@ -33,7 +33,7 @@ router.patch("/update", async function (req, res) {
 	let sql = `UPDATE books SET name=?, author=?, category=?, list=?,kind=? WHERE id_book=?`
 	let values = [req.body.name, req.body.author, req.body.category, req.body.list, req.body.kind, req.body.id_book]
 
-	db.query(await sql, await [values], function (err, data, fields) {
+	db.query(await sql, await values, function (err, data, fields) {
 		if (err) throw err;
 		res.json({
 			status: 200,
@@ -47,7 +47,7 @@ router.delete("/delete", async function (req, res) {
 	let sql = `DELETE FROM books WHERE id_book=?`
 	let values = [req.body.id_book]
 
-	db.query(await sql, await [values], function (err, data, fields) {
+	db.query(await sql, await values, function (err, data, fields) {
 		if (err) throw err;
 		res.json({
 			status: 200,
