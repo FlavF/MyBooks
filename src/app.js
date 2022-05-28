@@ -1,35 +1,74 @@
-const express = require("express")
 const path = require("path")
+const express = require("express")
+const hbs = require("hbs")
 const app = express()
 const cors = require("cors")
 const bodyParser = require("body-parser")
-
-//? routers
+//? Routers Setup
 const booksRouter = require("./routes/books")
-
 //? DATABASE Setup
 const db = require("./db/db")
+const { url } = require("inspector")
 
-// //? Datas
-// var server = {
-//     port: 4040
-// }
+//? paths
+const publicDirectoryPath = path.join(__dirname,"../public")
+const viewsPath = path.join(__dirname, '../templates/views')
+const partialsPath = path.join(__dirname, "../templates/partials")
+
+//? Module HBS
+app.set("view engine", "hbs")
+app.set("views", viewsPath)
+hbs.registerPartials(partialsPath)
+
+//? customize the server
+app.use(express.static(publicDirectoryPath))
 
 //? Module in use
 app.unsubscribe(cors())
 app.use(bodyParser.json())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true })); //* parsion incoming
-
-//? Router
 app.use('/books', booksRouter)
-//? Router for the form book
-app.get('/', function(req, res){
-    res.sendFile(path.resolve(__dirname,"../views") +'/index.html')
+
+//? Routers
+//? Page Homepage
+app.get("", function(req, res){
+    res.render("index"),{
+        title:"My Booklist"
+    }
 })
 
-// //? Start the server
-// app.listen(server.port, () => console.log(`Server started, listenning port : ${server.port}`))
+//? Pagefor add book
+app.get('/new', function(req, res){
+    res.render("new"),{
+        title:"Add new Book"
+    }
+})
+
+//? Page for bookList
+app.get('/list', function(req, res){
+    res.render("list"),{
+        title:"BookList"
+    }
+    
+    //?Datas for booklist
+    let url = "";
+    // res.send({
+    //     name,
+    //     author,
+    //     category,
+    //     list,
+    //     kind,
+    // })
+})
+
+//? Page for parameters
+app.get('/params', function(req, res){
+    res.render("params"),{
+        title:"Parameters"
+    }
+})
+
 
 
 module.exports = app

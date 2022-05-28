@@ -10,7 +10,7 @@ router.get("/list", function (req, res) {
 			status: 200,
 			data,
 			message: "Books list retrieved successfully",
-		});
+		})
 	});
 });
 

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Books</title>
+  <link rel="stylesheet" href="/css/main.css" type="text/css">
+</head>
+
+<body>
+  {{>header}}
+  <h1>{{title}}</h1>
+
+  <main>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Author</th>
+        <th>Category</th>
+        <th>List</th>
+        <th>Kind</th>
+        <th>Update</th>
+        <th>Delete</th>
+      </tr>
+      <tr>
+        <td id="data-name"></td>
+        <td id="data-author"></td>
+        <td id="data-category"></td>
+        <td id="data-list"></td>
+        <td id="data-kind"></td>
+        <td>fontawesome</td>
+        <td>fontawesome</td>
+      <tr>
+    </table>
+
+  </main>
+
+  <script src="/js/script.js"></script>
+</body>
+
+</html>
