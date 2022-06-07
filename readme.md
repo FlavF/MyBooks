@@ -24,19 +24,24 @@ Parameters via table and form
 ## Database contains
 Books : name,author,category,list,kind
 
+category : fantasy, roman, autobigraphy, war, thriller, romance
+
+list : create your own list (read, reading, to read, drop, on hold, to buy)
+
+kind : kind of book (paperbook, ebook, graphic book, manga, bd)
+
 ## To use
 * add a book
 * update or delete a book
-* 
 
-(To complete when updates)
+==> (To complete when updates)
 
 ## TODO
-- [x]Test postman update/delete
-- [x]Link to CSS
-- [ ]Get the list via table
+- [X]Test postman update/delete
+- [X]Link to CSS
+- [X]Get the list via table (Possibility to do it with ejs instead of hbs)
 - [ ]Protect database data to connect
-- [ ]Add category, list, kind to database in table
+- [X]Add category, list, kind to database in table
 - [ ]Add/Update/Delete category, list, kind via a page
 - [ ]filter booklist via category list kind
 - [ ]Possibility to download the list via excel table

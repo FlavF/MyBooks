@@ -45,22 +45,19 @@ app.get('/new', function(req, res){
     }
 })
 
+//TODO:get the data from routes/books.js  
 //? Page for bookList
 app.get('/list', function(req, res){
-    res.render("list"),{
-        title:"BookList"
-    }
-    
-    //?Datas for booklist
-    let url = "";
-    // res.send({
-    //     name,
-    //     author,
-    //     category,
-    //     list,
-    //     kind,
-    // })
+    let sql = `SELECT * FROM books`;
+    db.query(sql, function (err, data) {
+        if (err) throw err;
+        res.render("list",{
+            title:"BookList",
+            data
+        })
+    })
 })
+
 
 //? Page for parameters
 app.get('/params', function(req, res){

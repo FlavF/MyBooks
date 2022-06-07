@@ -5,7 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Books</title>
-  <link rel="stylesheet" href="/css/main.css" type="text/css">
+  <!-- Fontawesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+<!-- CSS -->
+<link rel="stylesheet" href="/css/main.css" type="text/css">
 </head>
 
 <body>
@@ -14,6 +17,7 @@
 
   <main>
     <table>
+      <thead>
       <tr>
         <th>Name</th>
         <th>Author</th>
@@ -23,15 +27,21 @@
         <th>Update</th>
         <th>Delete</th>
       </tr>
+      </thead> 
+      <tbody>
+          {{#each data}}
+          <form>
+            <td><input type="text" value="{{this.name}}"></td>
+            <td><input type="text" value="{{this.author}}"></td>
+            <td><input type="text" value="{{this.category}}"></td>
+            <td><input type="text" value="{{this.list}}"></td>
+            <td><input type="text" value="{{this.kind}}"></td>
+            <td><button><i class="fa-solid fa-file-pen"></i></button></td>
+            <td><button><i class="fa-solid fa-trash"></i></button></td>
       <tr>
-        <td id="data-name"></td>
-        <td id="data-author"></td>
-        <td id="data-category"></td>
-        <td id="data-list"></td>
-        <td id="data-kind"></td>
-        <td>fontawesome</td>
-        <td>fontawesome</td>
-      <tr>
+        </form>
+        {{/each}}
+        </tbody>
     </table>
 
   </main>
