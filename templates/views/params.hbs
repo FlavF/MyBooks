@@ -13,10 +13,28 @@
     <h1>{{title}}</h1>
 
     <main>
-      <p>Parameters</p>
-    </main>
+      <table>
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>List</th>
+            <th>Kind</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each dataCategories}}
+            <tr>
+              <td><input type="text" name="category" value="{{this.category}}"></td>
+              <td><input type="text" name="list" value="{{this.list}}"></td>
+              <td><input type="text" name="kind" value="{{this.kind}}"></td>
+            </tr>
+            {{#each dataCategories}}
+            </tbody>
+          </table>
 
-    <script src="/js/script.js"></script>
-  </body>
+        </main>
 
-</html>
+        <script src="/js/script.js"></script>
+      </body>
+
+    </html>

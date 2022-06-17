@@ -70,3 +70,13 @@ main {
     border:0.1rem solid lightseagreen;
     color:lightseagreen;
 }
+
+
+/* Table BookList */
+input {
+    border : none;
+}
+
+th{
+    text-align: left;
+}

@@ -1,19 +1,19 @@
 const express = require("express")
 const router = express.Router()
 
-//? Get book list
-router.get("/list", function (req, res) {
-	let sql = `SELECT * FROM books`;
-	db.query(sql, function (err, data) {
-		if (err) throw err;
-		res.json({
-			status: 200,
-			data,
-			message: "Books list retrieved successfully"
-		})
-	});
-})
+//? Get book list (JSON)
+	router.get("/datas", function (req, res) {
+		let sql = `SELECT * FROM books`;
 
+		db.query(sql, function (err, data, fields) {
+			if (err) throw err;
+			res.json({
+				status: 200,
+				data,
+				message: "Books list retrieved successfully"
+			})
+		})
+})
 
 //? Create a new book entry
 router.post("/new", async function (req, res) {
@@ -22,10 +22,11 @@ router.post("/new", async function (req, res) {
 	
 	db.query(await sql, await [values], function (err, data, fields) {
 		if (err) throw err;
-		res.json({
-			status: 200,
-			message: "New book added successfully",
-		})
+		// res.json({
+		// 	status: 200,
+		// 	message: "New book added successfully",
+		// })
+		res.render("new", {message: "New book added successfully"})
 	})
 })
 
@@ -38,14 +39,17 @@ router.patch("/update", async function (req, res) {
 		if (err) throw err;
 		res.json({
 			status: 200,
-			message: "Book updated successfully",
+			message: "Book updated successfully"
 		});
-		res.render("list/edit", {data:rows})
+		res.render("booklist", {
+			title: "BookList",
+			data,
+		});
 	});
 });
 
 //? DELETE a book entry
-router.delete("/delete", async function (req, res) {
+router.get("/delete", async function (req, res) {
 	let sql = `DELETE FROM books WHERE id_book=?`
 	let values = [req.body.id_book]
 	
@@ -53,11 +57,12 @@ router.delete("/delete", async function (req, res) {
 		if (err) throw err;
 		res.json({
 			status: 200,
-			message: "Book deleted successfully",
+			message: "Book deleted successfully"
 		});
-		res.render("list/delete", { data });
+		// res.render("list/delete", { data });
 	});
 });
 
 
 module.exports = router
+

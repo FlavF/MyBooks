@@ -1,4 +1,4 @@
-# MyBooks in progress
+# MyBooks (in progress)
 Have your own book list
 
 ## Architecture / Pages
@@ -24,7 +24,7 @@ Parameters via table and form
 ## Database contains
 Books : name,author,category,list,kind
 
-category : fantasy, roman, autobigraphy, war, thriller, romance
+category : Coding,Cookbooks,Fantasy,Fiction,HistoricalFiction,History,Mystery,Psychology,Romance,Science,ScienceFiction,Thriller,Travel,YoungAdult
 
 list : create your own list (read, reading, to read, drop, on hold, to buy)
 
@@ -33,6 +33,7 @@ kind : kind of book (paperbook, ebook, graphic book, manga, bd)
 ## To use
 * add a book
 * update or delete a book
+* book list
 
 ==> (To complete when updates)
 
@@ -40,10 +41,12 @@ kind : kind of book (paperbook, ebook, graphic book, manga, bd)
 - [X]Test postman update/delete
 - [X]Link to CSS
 - [X]Get the list via table (Possibility to do it with ejs instead of hbs)
-- [ ]Protect database data to connect
+- [X]Protect database data to connect (.env)
 - [X]Add category, list, kind to database in table
+- [ ]Update/delete book
 - [ ]Add/Update/Delete category, list, kind via a page
-- [ ]filter booklist via category list kind
+- [ ]Filter booklist via category list kind
+- [ ]Possibilities to have many categories but 1 list 1 kind
 - [ ]Possibility to download the list via excel table
 - [ ]ID/Password to connect to yourbooklist
 - [ ]Test with JEST or with new function Node.js V18

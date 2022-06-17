@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Books</title>
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/main.css" type="text/css">
+  </head>
+
+  <body>
+    {{>header}}
+    <h1>{{title}}</h1>
+
+    <main>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Author</th>
+            <th>Category</th>
+            <th>List</th>
+            <th>Kind</th>
+            <th>Update</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each data}}
+            <tr>
+              {{!-- To update --}}
+              <form action="/books/update">
+                <td><input type="text" name="name" value="{{this.name}}"></td>
+                <td><input type="text" name="author" value="{{this.author}}"></td>
+                <td><input type="text" name="category" value="{{this.category}}"></td>
+                <td><input type="text" name="list" value="{{this.list}}"></td>
+                <td><input type="text" name="kind" value="{{this.kind}}"></td>
+                <td>
+                  {{!-- ID hidden --}}
+                  <input type="hidden" name="id_book" value="{{this.id_book}}">
+                  <button>
+                    <i class="fa-solid fa-file-pen"></i>
+                  </button>
+                </td>
+              </form>
+              {{!-- To delete --}}
+              <td>
+                <button>
+                  <a href="/books/delete&id_book={{this.id_book}}">
+                    <i class="fa-solid fa-trash"></i>
+                  </button>
+                </td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+
+      </main>
+
+      <script src="/js/script.js"></script>
+    </body>
+
+  </html>

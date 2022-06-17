@@ -4,9 +4,13 @@ const hbs = require("hbs")
 const app = express()
 const cors = require("cors")
 const bodyParser = require("body-parser")
+
 //? Routers Setup
 const booksRouter = require("./routes/books")
+const categoriesRouter = require("./routes/categories")
+
 //? DATABASE Setup
+require("dotenv").config() //use to use .env
 const db = require("./db/db")
 const { url } = require("inspector")
 
@@ -27,8 +31,10 @@ app.use(express.static(publicDirectoryPath))
 app.unsubscribe(cors())
 app.use(bodyParser.json())
 app.use(express.json())
-app.use(express.urlencoded({ extended: true })); //* parsion incoming
+app.use(express.urlencoded({ extended: true })); //* parsin incoming
 app.use('/books', booksRouter)
+const booksDatas = app.use("/books/datas", booksRouter)
+app.use("/categories", categoriesRouter);
 
 //? Routers
 //? Page Homepage
@@ -47,16 +53,18 @@ app.get('/new', function(req, res){
 
 //TODO:get the data from routes/books.js  
 //? Page for bookList
-app.get('/list', function(req, res){
+app.get('/booklist', function(req, res){ 
+    //? can we get routes/books.js
     let sql = `SELECT * FROM books`;
     db.query(sql, function (err, data) {
         if (err) throw err;
-        res.render("list",{
+        res.render("booklist",{
             title:"BookList",
             data
         })
     })
 })
+
 
 
 //? Page for parameters
