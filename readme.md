@@ -22,13 +22,14 @@ Have your own book list.
 - [Node.js](https://nodejs.org/en/): Version 18.2.0
 - [Express](https://expressjs.com/): Version 4.16.1
 
-Modules/librairy : 
+Modules/librairies : 
 - [body-parser](https://www.npmjs.com/package/body-parser): Version 1.20.0 
 - [cors](https://www.npmjs.com/package/cors): Version 2.8.5
 - [dotenv](https://www.npmjs.com/package/dotenv): Version 16.0.1
-- [hbs](https://www.npmjs.com/package/hbs): Version 4.2.0
+- [hbs](https://www.npmjs.com/package/hbs): Version 4.2.0 
+=> To test hbs instead of ejs
 - [mysql](https://www.npmjs.com/package/mysql): Version 2.18.1
-- [nodemon](https://www.npmjs.com/package/nodemon): Version 2.0.16
+- [nodemon](https://www.npmjs.com/package/nodemon): Version 2.0.19
 
 <br/>
 
@@ -80,9 +81,9 @@ Page 3 - Parameters : Parameters via table and form
 #### *Folders to update*
 - .env : (/.env)
 
-DB_HOST = localhost
+DB_HOST = your host
 
-DB_USER = root
+DB_USER = your user
 
 DB_PASSWORD = yourpassword
 
@@ -123,6 +124,8 @@ kind : kind of book (paperbook, ebook, graphic book, manga, bd)
 - [X]Get the list via table (Possibility to do it with ejs instead of hbs)
 - [X]Protect database data to connect (.env)
 - [X]Add category, list, kind to database in table
+- [X]Add booklist, category, list, kind JSON files
+- [ ] MVC
 - [ ]Update/delete book
 - [ ]Add/Update/Delete category, list, kind via a page
 - [ ]Filter booklist via category list kind
@@ -130,7 +133,7 @@ kind : kind of book (paperbook, ebook, graphic book, manga, bd)
 - [ ]Possibility to download the list via excel table
 - [ ]ID/Password to connect to yourbooklist
 - [ ]Test with JEST or with new function Node.js V18
-- [ ]
+- [ ]English / French ?
 
 <br/>
 

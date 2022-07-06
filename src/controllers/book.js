@@ -1,0 +1,100 @@
+//? Page for bookList
+exports.getBookList = (req, res, next)=>{ 
+	let sql = `SELECT * FROM books`;
+	db.query(sql, function (err, data, fields) {
+		if (err) throw err;
+		res.render("booklist", {
+			title: "BookList",
+			data,
+		});
+	});
+};
+
+
+//? Get book list (JSON)
+exports.getBookListJSON = (req, res, next) => {
+	let sql = `SELECT * FROM books`;
+	db.query(sql, function (err, data, fields) {
+		if (err) throw err;
+		res.json({
+			status: 200,
+			data,
+			message: "Books list retrieved successfully",
+		});
+	});
+};
+
+
+//? Pagefor add book
+exports.newBook = (req, res, next)=>{
+	res.render("new"),{
+		title:"Add new Book"
+	}
+}
+
+
+//? Create a new book entry
+exports.addBook = async(req, res, next)=>{
+	let sql = `INSERT INTO Books(name,author,category,list,kind) VALUES(?)`;
+	let values = [
+		req.body.name,
+		req.body.author,
+		req.body.category,
+		req.body.list,
+		req.body.kind
+	];
+	
+	db.query(await sql, await [values], function (err, data, fields) {
+		if (err) throw err;
+		res.render("new", { message: "New book added successfully" });
+	});
+}
+
+// TODO : doesn't work from here
+
+//? Update a book entry
+exports.updateBook =  async(req, res, next) => {
+	let sql = `UPDATE Books SET name=?, author=?, category=?, list=?, kind=? WHERE id_book=?`;
+	let values = [
+		req.body.name,
+		req.body.author,
+		req.body.category,
+		req.body.list,
+		req.body.kind,
+		req.body.id_book,
+	];
+	
+	db.query(await sql, await values, function (err, data, fields) {
+		if (err) throw err;
+		res.json({
+			status: 200,
+			data,
+			message: "Book updated successfully",
+		});
+		
+	});
+	res.redirect("/");
+}
+
+//? DELETE a book entry
+exports.deleteBook = (req, res, next) => {
+	// let sql = `DELETE FROM books WHERE id_book=?`
+	// let values = [req.body.id_book]
+	let deleteQuery = `DELETE from ?? where ?? = ?"`;
+	let values = mysql.format(deleteQuery, [
+		"Books",
+		"id_book",
+		req.body.id_book,
+	]);
+	
+	db.query(query, function (err, data, fields) {
+		if (err) throw err;
+		res.json({
+			status: 200,
+			message: "Book deleted successfully",
+		});
+		// res.render("list/delete", { data });
+	});
+}
+
+

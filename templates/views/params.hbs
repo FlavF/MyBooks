@@ -1,40 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Books</title>
-    <link rel="stylesheet" href="/css/main.css" type="text/css">
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Books</title>
+  <!-- Fontawesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- CSS -->
+  <link rel="stylesheet" href="/css/main.css" type="text/css">
+</head>
 
-  <body>
-    {{>header}}
-    <h1>{{title}}</h1>
+<body>
+  {{>header}}
+  <h1>{{title}}</h1>
 
-    <main>
-      <table>
-        <thead>
-          <tr>
-            <th>Category</th>
-            <th>List</th>
-            <th>Kind</th>
-          </tr>
-        </thead>
-        <tbody>
-          {{#each dataCategories}}
-            <tr>
-              <td><input type="text" name="category" value="{{this.category}}"></td>
-              <td><input type="text" name="list" value="{{this.list}}"></td>
-              <td><input type="text" name="kind" value="{{this.kind}}"></td>
-            </tr>
-            {{#each dataCategories}}
-            </tbody>
-          </table>
+  <main>
+    <table>
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>List</th>
+          <th>Kind</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each dataCategories}}
+        {{#each dataLists}}
+        {{#each dataKinds}}
+        <tr>
+          <td><input type="text" name="category" value="{{this.category}}"></td>
+          <td><input type="text" name="list" value="{{this.list}}"></td>
+          <td><input type="text" name="kind" value="{{this.kind}}"></td>
+        </tr>
+        {{/each}}
+        {{/each}}
+        {{/each}}
+      </tbody>
+    </table>
 
-        </main>
+  </main>
 
-        <script src="/js/script.js"></script>
-      </body>
+  <script src="/js/script.js"></script>
+</body>
 
-    </html>
+</html>

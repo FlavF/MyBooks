@@ -13,7 +13,7 @@
   <h1>{{title}}</h1>
 
   <main>
-    <form class="add-book" action="/books/new" method="POST">
+    <form class="add-book" action="/booklist/new" method="POST">
       <p>
         <input type="text" name="name" placeholder="name" id="name">
       </p>
@@ -21,6 +21,7 @@
         <input type="text" name="author" placeholder="author" id="author">
       </p>
       <p>
+        {{!-- TODO :  get the categories from database --}}
         <select id="category" name="category">
           <option value="">--Please choose a category--</option>
           <option value="Classics">Classics</option>
@@ -40,6 +41,7 @@
         </select>
       </p>
       <p>
+        {{!-- TODO :  get the lists from database --}}
         <select id="list" name="list">
           <option value="">--Please choose a list--</option>
           <option value="Read">Read</option>
@@ -50,6 +52,7 @@
         </select>
       </p>
       <p>
+        {{!-- TODO :  get the kinds from database --}}
         <select id="kind" name="kind">
           <option value="">--What kind of book is it ?--</option>
           <option value="Comics">Comics</option>

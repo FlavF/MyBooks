@@ -2,9 +2,9 @@
   "name": "mybooks",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "dev": "nodemon src/app.js -e js,hbs",
+    "dev": "nodemon src/index.js -e js,hbs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "FlavF",

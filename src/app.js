@@ -6,8 +6,15 @@ const cors = require("cors")
 const bodyParser = require("body-parser")
 
 //? Routers Setup
-const booksRouter = require("./routes/books")
+const userRouter = require("./routes/user");
+const bookListRouter = require("./routes/bookList");
 const categoriesRouter = require("./routes/categories")
+const kindsRouter = require("./routes/kinds");
+const listsRouter = require("./routes/lists");
+const parametersRouter = require("./routes/parameters");
+
+//? Controller
+const errorController = require("./controllers/error")
 
 //? DATABASE Setup
 require("dotenv").config() //use to use .env
@@ -27,52 +34,22 @@ hbs.registerPartials(partialsPath)
 //? customize the server
 app.use(express.static(publicDirectoryPath))
 
-//? Module in use
+//? Modules in use
 app.unsubscribe(cors())
 app.use(bodyParser.json())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true })); //* parsin incoming
-app.use('/books', booksRouter)
-const booksDatas = app.use("/books/datas", booksRouter)
-app.use("/categories", categoriesRouter);
 
 //? Routers
-//? Page Homepage
-app.get("", function(req, res){
-    res.render("index"),{
-        title:"My Booklist"
-    }
-})
+app.use(userRouter)//? Homepage
+app.use('/booklist', bookListRouter)//? BookList pages
+app.use("/categories", categoriesRouter);//? Categories pages
+app.use("/kinds", kindsRouter);//? kinds pages
+app.use("/lists", listsRouter);//? lists pages
+app.use("/parameters", parametersRouter);//? Parameters pages
 
-//? Pagefor add book
-app.get('/new', function(req, res){
-    res.render("new"),{
-        title:"Add new Book"
-    }
-})
-
-//TODO:get the data from routes/books.js  
-//? Page for bookList
-app.get('/booklist', function(req, res){ 
-    //? can we get routes/books.js
-    let sql = `SELECT * FROM books`;
-    db.query(sql, function (err, data) {
-        if (err) throw err;
-        res.render("booklist",{
-            title:"BookList",
-            data
-        })
-    })
-})
-
-
-
-//? Page for parameters
-app.get('/params', function(req, res){
-    res.render("params"),{
-        title:"Parameters"
-    }
-})
+//? error Page
+app.use(errorController.getError404);
 
 
 
