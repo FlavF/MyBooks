@@ -1,5 +1,5 @@
 //? Page for bookList
-exports.getBookList = (req, res, next)=>{ 
+exports.getBookList = (req, res, next) => {
 	let sql = `SELECT * FROM books`;
 	db.query(sql, function (err, data, fields) {
 		if (err) throw err;
@@ -9,7 +9,6 @@ exports.getBookList = (req, res, next)=>{
 		});
 	});
 };
-
 
 //? Get book list (JSON)
 exports.getBookListJSON = (req, res, next) => {
@@ -24,77 +23,76 @@ exports.getBookListJSON = (req, res, next) => {
 	});
 };
 
-
 //? Pagefor add book
-exports.newBook = (req, res, next)=>{
-	res.render("new"),{
-		title:"Add new Book"
-	}
-}
-
+exports.newBook = (req, res, next) => {
+	res.render("new"),
+	{
+		title: "Add new Book",
+	};
+};
 
 //? Create a new book entry
-exports.addBook = async(req, res, next)=>{
+exports.addBook = async (req, res, next) => {
 	let sql = `INSERT INTO Books(name,author,category,list,kind) VALUES(?)`;
 	let values = [
 		req.body.name,
 		req.body.author,
 		req.body.category,
 		req.body.list,
-		req.body.kind
+		req.body.kind,
 	];
-	
+
 	db.query(await sql, await [values], function (err, data, fields) {
 		if (err) throw err;
 		res.render("new", { message: "New book added successfully" });
 	});
-}
+};
 
 // TODO : doesn't work from here
 
 //? Update a book entry
-exports.updateBook =  async(req, res, next) => {
-	let sql = `UPDATE Books SET name=?, author=?, category=?, list=?, kind=? WHERE id_book=?`;
-	let values = [
-		req.body.name,
-		req.body.author,
-		req.body.category,
-		req.body.list,
-		req.body.kind,
-		req.body.id_book,
-	];
-	
-	db.query(await sql, await values, function (err, data, fields) {
-		if (err) throw err;
-		res.json({
-			status: 200,
-			data,
-			message: "Book updated successfully",
-		});
-		
-	});
-	res.redirect("/");
-}
+exports.updateBook = (req, res, next) => {
+	//? Stop page to change ????
+	console.log(req.body.name)
+   db.query('UPDATE `Books` SET `name`=?,`author`=?,`cateogry`=? ,`list`=?, ,`kind`=? where `id_book`=?', [req.body.name, req.body.author, req.body.category, req.body.list, req.body.kind, req.body.id_book], function (error, results, fields) {
+      if (error) throw error;
+      res.end(JSON.stringify(results));
+    });
+	next()
+
+
+	///
+
+// 	let values = [
+// 		req.body.name,
+// 		req.body.author,
+// 		req.body.category,
+// 		req.body.list,
+// 		req.body.kind,
+// 		req.body.id_book
+// 	];
+// 	console.log(req.body.id_book)
+
+// 	let sql = "UPDATE `Books` SET `name`=?,`author`=?,`category`=?`,list`=?,`kind`=? where `id_book`=?"
+
+// 	db.query(await sql, await values, (err, data, fields) => {
+// 		if (err) throw err;
+// 		res.end(JSON.stringify(data));
+// 	});
+// 	next()
+// // 	res.redirect("/");
+};
 
 //? DELETE a book entry
-exports.deleteBook = (req, res, next) => {
-	// let sql = `DELETE FROM books WHERE id_book=?`
-	// let values = [req.body.id_book]
-	let deleteQuery = `DELETE from ?? where ?? = ?"`;
-	let values = mysql.format(deleteQuery, [
-		"Books",
-		"id_book",
-		req.body.id_book,
-	]);
+exports.deleteBook = async (req, res, next) => {
+	let values = mysql.format(req.body.id_book);
+"DELETE FROM `employee` WHERE `id`=?";
+	let sql = `DELETE from Books where id_book = ?"`;
 	
-	db.query(query, function (err, data, fields) {
+	db.query(await sql, await values, (err, data, fields) => {
 		if (err) throw err;
-		res.json({
-			status: 200,
-			message: "Book deleted successfully",
-		});
-		// res.render("list/delete", { data });
+		res.end("Record has been deleted!");
+		console.log(data)
 	});
-}
-
-
+	res.redirect("/");
+};

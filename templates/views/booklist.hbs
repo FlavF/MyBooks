@@ -32,7 +32,7 @@
           {{#each data}}
             <tr>
               {{!-- To update --}}
-              <form action="/booklist/update" method="POST">
+              <form action="/booklist" method="POST">
                 <td><input type="text" name="name" value="{{this.name}}"></td>
                 <td><input type="text" name="author" value="{{this.author}}"></td>
                 <td><input type="text" name="category" value="{{this.category}}"></td>

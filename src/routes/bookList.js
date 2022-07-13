@@ -18,10 +18,10 @@ router.get('/new', bookController.newBook)
 router.post("/new", bookController.addBook);
 
 //? To update a book entry (form)
-router.patch("/update", bookController.updateBook);
+router.put("/", bookController.updateBook);
 
 //? To delete a book entry (link)
-router.get("/delete",bookController.deleteBook );
+router.delete("/",bookController.deleteBook );
 
 module.exports = router;
 

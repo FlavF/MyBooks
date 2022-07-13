@@ -28,40 +28,79 @@ Modules/librairies :
 - [dotenv](https://www.npmjs.com/package/dotenv): Version 16.0.1
 - [hbs](https://www.npmjs.com/package/hbs): Version 4.2.0 
 => To test hbs instead of ejs
-- [mysql](https://www.npmjs.com/package/mysql): Version 2.18.1
 - [nodemon](https://www.npmjs.com/package/nodemon): Version 2.0.19
+- [sequelize-auto ](https://github.com/sequelize/sequelize-auto): Version 0.8.8
 
 <br/>
 
 ### Installation
 ---
-Node should be already install.
+- Need Node.js
 
-If not install, check : https://nodejs.org/en/ 
+If not install, check : https://nodejs.org/en/
 
-Clone : 
+- Clone :
+
 ```
 $ git clone https://github.com/FlavF/MyBooks
 ```
 
 or
 
-installation without clone : 
+- Installation without clone :
 
 ```
 $ cd ../path/to/the/file
 $ npm init
 $ npm install express --save
-$ npm i mysql
 $ npm i body-parser
 $ npm i cors
+// view engine
 $ npm i hbs
-$ npm install --save-dev nodemon
+//to not restart your node.js src/index.js everytime your changing your code
+$ npm install --save-dev nodemon  
+//For .env
 $ npm i dotenv
-//Create and Update your .env => look at Pages - Folders to Update for datas
-//To start the app (don't forget to start mysql)
+```
+- Create and Update your .env => look at Pages - Folders to Update for datas
+
+- To start the app and check it
+
+(don't forget to start MySql if you use a localhost mysql)
+
+```
 $ nodemon src/app.js
 ```
+
+
+- To install sequelize for mysql :
+  [Sequelize](https://sequelize.org/docs/v6/getting-started/)
+
+```
+$ npm install sequelize mysql2
+```
+
+- To install models for a database already built :
+  [Sequelize-Auto](https://github.com/sequelize/sequelize-auto)
+
+```
+$ npm install sequelize-auto
+```
+
+=> My laptop didn't like sequelize-auto :
+
+```
+$ sequelize-auto -o "./models" -d sequelize_auto_test -h localhost -u my_username -p 5432 -x my_password -e postgres
+```
+
+=> So I replace it with :
+(replace databasename,user, password and path for models )
+
+```
+$ node ./node_modules/sequelize-auto/bin/sequelize-auto -o "src/models" -d databasename -h host -u user -p 3306 -x password -e mysql
+```
+
+Use : https://github.com/sequelize/sequelize-auto/issues/441 ?
 
 <br/>
 
@@ -95,6 +134,8 @@ DB_NAME = MyBooks
 ---
 ![Image text](/ViewDatabase.png)
 
+=> To update to link category, list and kind
+
 Books : name,author,category,list,kind
 
 category : Coding,Cookbooks,Fantasy,Fiction,HistoricalFiction,History,Mystery,Psychology,Romance,Science,ScienceFiction,Thriller,Travel,YoungAdult
@@ -119,22 +160,26 @@ kind : kind of book (paperbook, ebook, graphic book, manga, bd)
 
 ### TODO
 ---
-- [X]Test postman update/delete
-- [X]Link to CSS
-- [X]Get the list via table (Possibility to do it with ejs instead of hbs)
-- [X]Protect database data to connect (.env)
-- [X]Add category, list, kind to database in table
-- [X]Add booklist, category, list, kind JSON files
-- [ ] MVC
-- [ ]Update/delete book
-- [ ]Add/Update/Delete category, list, kind via a page
-- [ ]Filter booklist via category list kind
-- [ ]Possibilities to have many categories but 1 list 1 kind
-- [ ]Possibility to download the list via excel table
-- [ ]ID/Password to connect to yourbooklist
-- [ ]Test with JEST or with new function Node.js V18
-- [ ]English / French ?
-
+- [X] Test postman update/delete
+- [X] Link to CSS
+- [X] Get the list via table (Possibility to do it with ejs instead of hbs)
+- [X] Protect database data to connect (.env)
+- [X] Add category, list, kind to database in table
+- [X] Add booklist, category, list, kind JSON files
+- [X] MVC
+- [ ] CRUD books
+- [ ] Database : links category, list, kind to books
+- [ ] And retry CRUD books
+- [ ] CRUD category, list, kind via a page 
+- [ ] Filter booklist via category list kind
+- [ ] Possibilities to have many categories but 1 list 1 kind
+- [ ] Possibility to download the list via excel table 
+- [ ] ID/Password to connect to yourbooklist
+- [ ] Retry all the CRUD with connection
+- [ ] Test with JEST or with new function Node.js V18 
+- [ ] English / French ?
+- [ ] Clean database to only have a app model
+ 
 <br/>
 
 ### FAQs
